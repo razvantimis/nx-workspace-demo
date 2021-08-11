@@ -12,9 +12,15 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "ZTVhYWY0ZWEtODE4YS00ZTVmLTg3NjMtODc1ZDYzZGU3NTdkfHJlYWQtd3JpdGU="
       }
     }
   },
@@ -32,7 +38,9 @@
     },
     "invest-client-e2e": {
       "tags": [],
-      "implicitDependencies": ["invest-client"]
+      "implicitDependencies": [
+        "invest-client"
+      ]
     }
   }
 }
