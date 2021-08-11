@@ -1,0 +1,127 @@
+{
+  "version": 2,
+  "projects": {
+    "invest-client": {
+      "root": "apps/invest-client",
+      "sourceRoot": "apps/invest-client/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/invest-client",
+            "index": "apps/invest-client/src/index.html",
+            "main": "apps/invest-client/src/main.tsx",
+            "polyfills": "apps/invest-client/src/polyfills.ts",
+            "tsConfig": "apps/invest-client/tsconfig.app.json",
+            "assets": [
+              "apps/invest-client/src/favicon.ico",
+              "apps/invest-client/src/assets"
+            ],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/invest-client/src/environments/environment.ts",
+                  "with": "apps/invest-client/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "invest-client:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "invest-client:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/invest-client/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/invest-client"],
+          "options": {
+            "jestConfig": "apps/invest-client/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "invest-client-e2e": {
+      "root": "apps/invest-client-e2e",
+      "sourceRoot": "apps/invest-client-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/invest-client-e2e/cypress.json",
+            "tsConfig": "apps/invest-client-e2e/tsconfig.e2e.json",
+            "devServerTarget": "invest-client:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "invest-client:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/invest-client-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "styled-components"
+      },
+      "library": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "invest-client"
+}
