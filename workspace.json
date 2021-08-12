@@ -1,6 +1,56 @@
 {
   "version": 2,
   "projects": {
+    "invest-api": {
+      "root": "apps/invest-api",
+      "sourceRoot": "apps/invest-api/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/invest-api",
+            "main": "apps/invest-api/src/main.ts",
+            "tsConfig": "apps/invest-api/tsconfig.app.json",
+            "assets": ["apps/invest-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/invest-api/src/environments/environment.ts",
+                  "with": "apps/invest-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "invest-api:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/invest-api/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/invest-api"],
+          "options": {
+            "jestConfig": "apps/invest-api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "invest-client": {
       "root": "apps/invest-client",
       "sourceRoot": "apps/invest-client/src",
