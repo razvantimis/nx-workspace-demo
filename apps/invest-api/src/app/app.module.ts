@@ -1,11 +1,16 @@
 import { Module } from '@nestjs/common';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { GraphQLModule } from '@nestjs/graphql';
+import { UserModule } from './features/user/user.module';
+import { PrismaService } from './prisma.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    UserModule,
+    GraphQLModule.forRoot({
+      debug: true,
+      autoSchemaFile: 'schema.gql',
+    }),
+  ],
+  providers: [PrismaService],
 })
-export class AppModule {}
+export class AppModule { }
