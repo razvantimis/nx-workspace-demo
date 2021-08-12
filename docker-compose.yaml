@@ -6,8 +6,6 @@ services:
     restart: always
     ports:
       - 5432:5432
-    env_file:
-      - .env
     volumes:
       - "./db_data:/var/lib/postgresql/data"
     environment:
@@ -33,6 +31,18 @@ services:
     command:
       - graphql-engine
       - serve
+  invest-api:
+    container_name: invest-api
+    image: invest-api:1.0.0
+    build:
+      context: ./
+      dockerfile: ./apps/invest-api/Dockerfile
+      args:
+        NODE_ENV: "development"
+        BUILD_FLAG: ""
+    ports:
+        - 3333:3333
+    restart: unless-stopped
   hasura-backend-plus:
     image: "nhost/hasura-backend-plus:latest"
     container_name: hasura-backend-plus
