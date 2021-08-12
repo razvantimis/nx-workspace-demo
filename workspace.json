@@ -8,12 +8,16 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/invest-api",
             "main": "apps/invest-api/src/main.ts",
             "tsConfig": "apps/invest-api/tsconfig.app.json",
-            "assets": ["apps/invest-api/src/assets"]
+            "assets": [
+              "apps/invest-api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -38,12 +42,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/invest-api/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/invest-api/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/invest-api"],
+          "outputs": [
+            "coverage/apps/invest-api"
+          ],
           "options": {
             "jestConfig": "apps/invest-api/jest.config.js",
             "passWithNoTests": true
@@ -58,7 +66,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/invest-client",
             "index": "apps/invest-client/src/index.html",
@@ -114,12 +124,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/invest-client/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/invest-client/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/invest-client"],
+          "outputs": [
+            "coverage/apps/invest-client"
+          ],
           "options": {
             "jestConfig": "apps/invest-client/jest.config.js",
             "passWithNoTests": true
@@ -148,31 +162,91 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/invest-client-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/invest-client-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "prisma-models": {
+      "root": "libs/prisma-models",
+      "sourceRoot": "libs/prisma-models/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/prisma-models/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/prisma-models"
+          ],
+          "options": {
+            "jestConfig": "libs/prisma-models/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "migrate-save": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "npx prisma migrate save --experimental --schema ./src/prisma/prisma.schema",
+            "cwd": "libs/prisma-models"
+          }
+        },
+        "migrate-up": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "npx prisma migrate up --experimental --schema ./src/prisma/schema.prisma",
+            "cwd": "libs/prisma-models"
+          }
+        },
+        "prisma-gen": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "npx prisma generate --schema ./src/prisma/schema.prisma",
+            "cwd": "libs/prisma-models"
+          }
+        },
+        "prisma-pull": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "npx prisma db pull --schema ./src/prisma/schema.prisma",
+            "cwd": "libs/prisma-models"
           }
         }
       }
     }
   },
-  "cli": {
-    "defaultCollection": "@nrwl/react",
-    "packageManager": "yarn"
-  },
-  "generators": {
-    "@nrwl/react": {
-      "application": {
-        "style": "styled-components",
-        "linter": "eslint",
-        "babel": true
-      },
-      "component": {
-        "style": "styled-components"
-      },
-      "library": {
-        "style": "styled-components",
-        "linter": "eslint"
+    "cli": {
+      "defaultCollection": "@nrwl/react",
+      "packageManager": "yarn"
+    },
+    "generators": {
+      "@nrwl/react": {
+        "application": {
+          "style": "styled-components",
+          "linter": "eslint",
+          "babel": true
+        },
+        "component": {
+          "style": "styled-components"
+        },
+        "library": {
+          "style": "styled-components",
+          "linter": "eslint"
+        }
       }
-    }
-  },
-  "defaultProject": "invest-client"
-}
+    },
+    "defaultProject": "invest-client"
+  }
+  

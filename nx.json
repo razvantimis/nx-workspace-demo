@@ -37,6 +37,9 @@
     "invest-client-e2e": {
       "tags": [],
       "implicitDependencies": ["invest-client"]
+    },
+    "prisma-models": {
+      "tags": []
     }
   }
 }
