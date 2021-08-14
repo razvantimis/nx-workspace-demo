@@ -27,14 +27,18 @@
   },
   "private": true,
   "dependencies": {
+    "@headlessui/react": "^1.4.0",
+    "@heroicons/react": "^1.0.3",
     "@nestjs/common": "^8.0.6",
     "@nestjs/core": "^8.0.6",
     "@nestjs/graphql": "^8.0.2",
     "@nestjs/platform-express": "^8.0.6",
     "@prisma/client": "2.29.0",
     "apollo-server-express": "2.25.2",
+    "autoprefixer": "^10.3.1",
     "core-js": "^3.6.5",
     "graphql": "^15.5.1",
+    "postcss": "^8.3.6",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-is": "17.0.2",
@@ -42,6 +46,7 @@
     "regenerator-runtime": "0.13.7",
     "rxjs": "~6.6.3",
     "styled-components": "5.2.1",
+    "tailwindcss": "^2.2.7",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
