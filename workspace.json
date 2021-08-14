@@ -71,7 +71,7 @@
             ],
             "styles": [],
             "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
+            "webpackConfig": "apps/invest-client/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -85,9 +85,9 @@
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
-              "namedChunks": false,
+              "namedChunks": true,
               "extractLicenses": true,
-              "vendorChunk": false,
+              "vendorChunk": true,
               "budgets": [
                 {
                   "type": "initial",
