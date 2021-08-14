@@ -40,6 +40,9 @@
     },
     "prisma-models": {
       "tags": []
+    },
+    "ui-shared": {
+      "tags": []
     }
   }
 }

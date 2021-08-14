@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@timisdev/prisma-models": ["libs/prisma-models/src/index.ts"]
+      "@timisdev/prisma-models": ["libs/prisma-models/src/index.ts"],
+      "@timisdev/ui-shared": ["libs/ui-shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
