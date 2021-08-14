@@ -3,7 +3,7 @@ const { join } = require('path');
 
 module.exports = {
   purge: {
-    enabled: true,
+    enabled: false, // enable in production
     content: [
       join(__dirname, 'src/app/**/*.{js,ts,jsx,tsx}'),
       ...createGlobPatternsForDependencies(__dirname),
