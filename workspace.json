@@ -200,8 +200,7 @@
           "executor": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
-            "command": "npx prisma db pull --schema ./src/prisma/schema.prisma",
-            "cwd": "libs/prisma-models"
+            "command": "npx prisma db pull --schema ./libs/prisma-models/src/prisma/schema.prisma"
           }
         }
       }
